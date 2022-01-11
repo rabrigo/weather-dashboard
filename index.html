@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="Assets/style.css">
+        <link rel="stylesheet" href="./Assets/style.css">
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
         <title>Weather Dashboard</title>
 </head>
@@ -20,13 +20,16 @@
                         <div class="card col-12 col-md-3 col-lg-4">
                                 <div class="card-body">
                                         <h5 class="card-title">Search for city</h5>
-                                        <input type="text" id="city" name="city"><br><br>
-                                        <a href="#" class="btn btn-primary">Search</a>
+                                        <input type="text" id="search-input" name="city"><br><br>
+                                        <a href="#" class="search-button btn btn-primary">Search</a>
                                 </div>
+                                <ul id="search-history">
+                                        <h5>Previous searches: </h5>
+                                </ul>
                         </div>
                         <div class="card col-12 col-md-9 col-lg-8">
                                 <div class="card-body">
-                                        <h4 class="city-date">City & Date</h4>
+                                        <h4 class="city-display">City & Date</h4>
                                         <h5 class="temp-display">Temp</p>
                                         <h5 class="wind-display">Wind</h5>
                                         <h5 class="humidity-display">Humidity</h5>
