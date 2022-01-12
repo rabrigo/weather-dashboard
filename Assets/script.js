@@ -1,42 +1,56 @@
-var searchInput = document.querySelector('#search-input');
+var searchHistory = [''];
+var searchInput = document.getElementById('search-input');
 var searchButton = document.querySelector('.search-button');
 var cityDisplay = document.querySelector('.city-display');
 var tempDisplay = document.querySelector('.temp-display');
 var windDisplay = document.querySelector('.wind-display');
 var humidityDisplay = document.querySelector('.humidity-display');
-var uvIndexDisplay = document.querySelector('.uv-index-display');
 var cityToSearch;
 var apiURL;
-var searchHistoryDisplay = document.querySelector('#search-history');
+var searchHistoryDisplay = document.querySelector('#search-history-display');
+
+function renderHistory() {
+    var searchArray = JSON.parse(localStorage.getItem("searchHistory"));
+    if (!searchArray) {
+        return;
+    } else {
+        for (var i = 0; i < searchArray.length; i++) {
+                var searchItem = document.createElement('h6');
+                searchItem.innerText = searchArray[i];
+                console.log(searchItem);
+                console.log(searchArray[i]);
+                searchHistoryDisplay.appendChild(searchItem);
+        }   
+        console.log(searchArray)}
+        }
 
 function searchWeather () {
         cityToSearch = searchInput.value;
-        // console.log(cityToSearch);
-        apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityToSearch}&appid=28f599eb217e2b8510f6add9afd17c7b&units=imperial`;
+        var apiKEY = "28f599eb217e2b8510f6add9afd17c7b";
+        apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityToSearch}&appid=${apiKEY}&units=imperial`;
         fetch(apiURL)
                 .then(function (response) {
                         return response.json();
                 })
                 .then(function (data) {
                         console.log(data);
-                        // console.log(data.weather[0].main);
-                        cityDisplay.textContent = `${data.name} (${moment().format('MM/DD/YYYY')}): ${data.main.temp}\u00B0F`;
-                        tempDisplay.textContent = `${data.main.temp}\u00B0F`;
-                        windDisplay.textContent = `${data.wind.speed} MPH`;
-                        humidityDisplay.textContent = `${data.main.humidity}`;
-                        uvIndexDisplay.textContent = `${data.main.humidity}`;
+                        cityDisplay.textContent = `${data.name} (${moment().format('MM/DD/YYYY')}): ${data.weather[0].main}`;
+                        tempDisplay.textContent = `Temperature: ${data.main.temp}\u00B0F`;
+                        windDisplay.textContent = `Wind: ${data.wind.speed} MPH`;
+                        humidityDisplay.textContent = `Humidity: ${data.main.humidity}`;
                 });
-        localStorage.setItem("searched", cityToSearch);
         updateHistory();
         }
 
 function updateHistory() {
-        var recentSearch = document.createElement('h5');
-        recentSearch.textContent = localStorage.getItem("searched");
+        var recentSearch = document.createElement('h6');
+        recentSearch.textContent = cityToSearch;
+        searchHistory.push(cityToSearch);
         searchHistoryDisplay.appendChild(recentSearch);
+        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
 }
 
-// console.log(searchButton);
+renderHistory();
 searchButton.addEventListener("click", function(event) {
         event.preventDefault();
         searchWeather();

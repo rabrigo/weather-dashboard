@@ -17,29 +17,31 @@
         </div>
         <main class="container-fluid">
                 <div class="row">
-                        <div class="card col-12 col-md-3 col-lg-4">
+                        <div class="card col-12 col-md-4 col-lg-3 mx-4">
                                 <div class="card-body">
                                         <h5 class="card-title">Search for city</h5>
-                                        <input type="text" id="search-input" name="city"><br><br>
+                                        <input type="search" id="search-input"><br><br>
                                         <a href="#" class="search-button btn btn-primary">Search</a>
                                 </div>
-                                <ul id="search-history">
-                                        <h5>Previous searches: </h5>
+                                <hr>
+                                <ul id="search-history-display">
+                                        <h6>Previous searches: </h6>
                                 </ul>
                         </div>
-                        <div class="card col-12 col-md-9 col-lg-8">
-                                <div class="card-body">
-                                        <h4 class="city-display">City & Date</h4>
-                                        <h5 class="temp-display">Temp</p>
-                                        <h5 class="wind-display">Wind</h5>
-                                        <h5 class="humidity-display">Humidity</h5>
-                                        <h5 class="uv-index-display">UV Index</h5>
+                        <div class="card col-12 col-md-7 col-lg-8">
+                                <div class="card-body" id="main-card">
+                                        <h3 class="city-display">City & Date:</h3>
+                                        <br>
+                                        <h5 class="temp-display">Temp:</h5>
+                                        <br>
+                                        <h5 class="wind-display">Wind:</h5>
+                                        <br>
+                                        <h5 class="humidity-display">Humidity:</h5>
                                 </div>
                         </div>
                 </div>
         </main>
-
-        <script src="Assets/script.js"></script>
+        <script src="./Assets/script.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
